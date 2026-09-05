@@ -37,6 +37,22 @@ class TestTodo(unittest.TestCase):
         ]
         self.assertEqual(todo.count_remaining(tasks), 2)
 
+    def test_parse_index_valid(self):
+        tasks = [{"text": "buy milk", "done": False}]
+        self.assertEqual(todo.parse_index("0", tasks), 0)
+
+    def test_parse_index_out_of_range(self):
+        tasks = [{"text": "buy milk", "done": False}]
+        self.assertIsNone(todo.parse_index("99", tasks))
+
+    def test_parse_index_negative(self):
+        tasks = [{"text": "buy milk", "done": False}]
+        self.assertIsNone(todo.parse_index("-1", tasks))
+
+    def test_parse_index_non_numeric(self):
+        tasks = [{"text": "buy milk", "done": False}]
+        self.assertIsNone(todo.parse_index("abc", tasks))
+
 
 if __name__ == "__main__":
     unittest.main()

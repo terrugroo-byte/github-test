@@ -44,6 +44,13 @@ def remove_task(tasks, index):
     print(f"Removed: {removed['text']}")
 
 
+def clear_tasks(tasks):
+    count = len(tasks)
+    tasks.clear()
+    save_tasks(tasks)
+    print(f"Cleared {count} task(s)")
+
+
 def main(argv):
     tasks = load_tasks()
     if not argv:
@@ -59,9 +66,11 @@ def main(argv):
         complete_task(tasks, int(rest[0]))
     elif command == "rm":
         remove_task(tasks, int(rest[0]))
+    elif command == "clear":
+        clear_tasks(tasks)
     else:
         print(f"Unknown command: {command}")
-        print("Usage: todo.py [add <text> | list | done <index> | rm <index>]")
+        print("Usage: todo.py [add <text> | list | done <index> | rm <index> | clear]")
         return 1
     return 0
 

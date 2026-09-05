@@ -24,6 +24,11 @@ class TestTodo(unittest.TestCase):
         self.assertEqual(removed["text"], "buy milk")
         self.assertEqual(len(tasks), 1)
 
+    def test_clear_tasks(self):
+        tasks = [{"text": "buy milk", "done": False}, {"text": "walk dog", "done": False}]
+        tasks.clear()
+        self.assertEqual(tasks, [])
+
 
 if __name__ == "__main__":
     unittest.main()

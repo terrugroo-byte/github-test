@@ -29,6 +29,14 @@ class TestTodo(unittest.TestCase):
         tasks.clear()
         self.assertEqual(tasks, [])
 
+    def test_count_remaining_excludes_done_tasks(self):
+        tasks = [
+            {"text": "buy milk", "done": True},
+            {"text": "walk dog", "done": False},
+            {"text": "pay rent", "done": False},
+        ]
+        self.assertEqual(todo.count_remaining(tasks), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

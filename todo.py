@@ -51,6 +51,12 @@ def clear_tasks(tasks):
     print(f"Cleared {count} task(s)")
 
 
+def count_remaining(tasks):
+    remaining = len(tasks)
+    print(f"{remaining} task(s) remaining")
+    return remaining
+
+
 def main(argv):
     tasks = load_tasks()
     if not argv:
@@ -68,9 +74,11 @@ def main(argv):
         remove_task(tasks, int(rest[0]))
     elif command == "clear":
         clear_tasks(tasks)
+    elif command == "count":
+        count_remaining(tasks)
     else:
         print(f"Unknown command: {command}")
-        print("Usage: todo.py [add <text> | list | done <index> | rm <index> | clear]")
+        print("Usage: todo.py [add <text> | list | done <index> | rm <index> | clear | count]")
         return 1
     return 0
 

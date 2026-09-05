@@ -57,6 +57,18 @@ def count_remaining(tasks):
     return remaining
 
 
+def parse_index(raw, tasks):
+    try:
+        index = int(raw)
+    except ValueError:
+        print(f"Error: '{raw}' is not a valid task number")
+        return None
+    if not 0 <= index < len(tasks):
+        print(f"Error: no task at index {index}")
+        return None
+    return index
+
+
 def main(argv):
     tasks = load_tasks()
     if not argv:
@@ -69,9 +81,15 @@ def main(argv):
     elif command == "list":
         list_tasks(tasks)
     elif command == "done":
-        complete_task(tasks, int(rest[0]))
+        index = parse_index(rest[0], tasks)
+        if index is None:
+            return 1
+        complete_task(tasks, index)
     elif command == "rm":
-        remove_task(tasks, int(rest[0]))
+        index = parse_index(rest[0], tasks)
+        if index is None:
+            return 1
+        remove_task(tasks, index)
     elif command == "clear":
         clear_tasks(tasks)
     elif command == "count":

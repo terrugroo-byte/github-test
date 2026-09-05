@@ -52,7 +52,7 @@ def clear_tasks(tasks):
 
 
 def count_remaining(tasks):
-    remaining = len(tasks)
+    remaining = sum(1 for task in tasks if not task["done"])
     print(f"{remaining} task(s) remaining")
     return remaining
 

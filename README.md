@@ -1,7 +1,7 @@
 # github-test
 
 A tiny sandbox project for practicing Git/GitHub workflows (branches, PRs,
-issues, Actions) and for testing how Claude Code can drive `gh` on my behalf.
+issues, Actions, Forking) and for testing how Claude Code can drive `gh` on my behalf.
 
 The app itself is intentionally small: a command-line to-do list.
 
